@@ -40,6 +40,18 @@ angular.module('app.routes', [])
     controller: 'signUp2Ctrl'
   })
 
+  .state('activation', {
+    url: '/activationuser',
+    templateUrl: 'templates/activation.html',
+    controller: 'activationCtrl'
+  })
+
+  .state('activationDetails', {
+    url: '/detailsuser',
+    templateUrl: 'templates/activationDetails.html',
+    controller: 'activationDetailsCtrl'
+  })
+
 $urlRouterProvider.otherwise('/usertype')
 
   
