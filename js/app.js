@@ -7,6 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives','app.services',])
 
+
 .config(function($ionicConfigProvider, $sceDelegateProvider){
   
 
@@ -51,3 +52,20 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
         }]
     };
 }])
+
+angular.module('ionicApp', ['ionic'])
+
+.controller('PlaylistsCtrl', function($scope, $ionicPopup, $timeout) {
+  $scope.data = {}
+  
+  // Triggered on a button click, or some other target
+  $scope.showPopup = function() {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Dont eat that!',
+      template: 'It might taste good'
+    });
+    alertPopup.then(function(res) {
+      console.log('Thank you for not eating my delicious ice cream cone');
+    });
+  };
+});
