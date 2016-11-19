@@ -52,6 +52,54 @@ angular.module('app.routes', [])
     controller: 'activationDetailsCtrl'
   })
 
+  .state('restaurants', {
+    url: '/restaurants',
+    templateUrl: 'templates/restaurants.html',
+    controller: 'restaurantsCtrl'
+  })
+
+  .state('account', {
+    url: '/account',
+    templateUrl: 'templates/account.html',
+    controller: 'accountCtrl'
+  })
+
+  .state('newEMail', {
+    url: '/changeemail',
+    templateUrl: 'templates/newEMail.html',
+    controller: 'newEMailCtrl'
+  })
+
+  .state('newPassword', {
+    url: '/new-password',
+    templateUrl: 'templates/newPassword.html',
+    controller: 'newPasswordCtrl'
+  })
+
+  .state('newPhoneNumber', {
+    url: '/new-number',
+    templateUrl: 'templates/newPhoneNumber.html',
+    controller: 'newPhoneNumberCtrl'
+  })
+
+  .state('done', {
+    url: '/done-email',
+    templateUrl: 'templates/done.html',
+    controller: 'doneCtrl'
+  })
+
+  .state('done2', {
+    url: '/pone-password',
+    templateUrl: 'templates/done2.html',
+    controller: 'done2Ctrl'
+  })
+
+  .state('done3', {
+    url: '/done-number',
+    templateUrl: 'templates/done3.html',
+    controller: 'done3Ctrl'
+  })
+
 $urlRouterProvider.otherwise('/usertype')
 
   
