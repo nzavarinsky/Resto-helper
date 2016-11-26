@@ -1,1 +1,8 @@
-/* Empty. Add your own CSS if you like */
+.tabs 
+{
+   width:100%;  position:fixed; bottom:0; font-size:11px; color:#FFFFFF; text-align:center; height:30px;
+}
+.tabs-icon-left
+{
+   width:100%;  position:fixed; bottom:0; font-size:11px; color:#FFFFFF; text-align:center; height:30px;
+}
