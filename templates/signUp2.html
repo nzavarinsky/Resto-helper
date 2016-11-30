@@ -2,29 +2,35 @@
   <ion-content padding="false" class=" manual-remove-top-padding has-header">
     <form id="signUp2-form6" class="list">
       <ion-list id="signUp2-list5">
-        <label class="item item-input" id="signUp2-input8">
-          <span class="input-label">Restaurant name</span>
-          <input type="text" placeholder="">
-        </label>
-        <label class="item item-input" id="signUp2-input9">
-          <span class="input-label">Your name</span>
-          <input type="text" placeholder="">
-        </label>
-        <label class="item item-input item-stacked-label" id="signUp2-input10">
-          <span class="input-label">Your ID</span>
-          <input type="text" placeholder="">
-        </label>
-      </ion-list>
-      <div class="spacer" style="width: 300px; height: 14px;"></div>
-      <label class="item item-input" id="signUp2-input19">
-        <span class="input-label">Phone</span>
-        <input type="tel" placeholder="">
-      </label>
+      <label class="item item-input">
+            <span class="input-label">Restaurant name</span>
+            <input type="text" ng-model="registration.restaurantname">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Your name</span>
+            <input type="text" ng-model="registration.name">
+          </label>
+		  <label class="item item-input">
+            <span class="input-label">Your ID</span>
+            <input type="number" ng-model="registration.ID">
+          </label>
+		   <label class="item item-input">
+            <span class="input-label">Your password</span>
+            <input type="password" ng-model="registration.pass">
+          </label>
+		   <label class="item item-input">
+            <span class="input-label">Your phone</span>
+            <input type="tel" ng-model="registration.phone">
+          </label>
+        </div>
+ 
+ 
       <div class="spacer" style="width: 300px; height: 13px;"></div>
-      <label class="item item-select" id="signUp2-select1">
-        <span class="input-label">Cuisine</span>
+      <label class="item item-select" id="signUp2-select1" >
+        <span class="input-label"  >Cuisine</span>
+		 <span type="item-select" ng-model="registration.cuisine">
         <select>
-          <option>Ukrainian</option>
+          <option >Ukrainian</option>
           <option>Chinese</option>
           <option>European</option>
           <option>Asian</option>
@@ -32,8 +38,9 @@
           <option>Italian</option>
           <option>Spanish</option>
         </select>
+		
       </label>
-      <label class="item item-select" id="signUp2-select2">
+      <label class="item item-select" id="signUp2-select2" ng-model="registration.restauranttype">
         <span class="input-label">Restaurant type</span>
         <select>
           <option>Restaurant</option>
@@ -42,8 +49,13 @@
           <option>Cafe</option>
           <option>Fastfood</option>
         </select>
+		
       </label>
-      <a ui-sref="activation2" id="signUp2-button13" class="button button-positive  button-full icon-right ion-log-in">Sign up</a>
+	  <div class="bar bar-footer bar-positive button button-full button-balanced>
+         <button class="button button-full button-positive" ng-click="signUp()">
+          Sign in
+        </button>
+		</div>
     </form>
   </ion-content>
 </ion-view>

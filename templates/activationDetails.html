@@ -11,11 +11,11 @@
       <form id="activationDetails-form9" class="list">
         <label class="item item-input item-stacked-label" id="activationDetails-input14" name="Phone">
           <span class="input-label">Your contact nubmer*</span>
-          <input type="tel" placeholder="+380998877664">
+          <input type="tel" placeholder="+380998877664" ng-model="details.number">
         </label>
         <label class="item item-input item-stacked-label" id="activationDetails-input15">
           <span class="input-label">Choose your age</span>
-          <input type="number" placeholder="18">
+          <input type="number" placeholder="18" ng-model="details.age">
         </label>
         <label class="item item-select" id="activationDetails-select7">
           <span class="input-label">Cuisine</span>
@@ -29,7 +29,7 @@
       </form>
     </div>
     <div class="spacer" style="width: 300px; height: 5px;"></div>
-    <div class="bar bar-footer bar-positive" ui-sref="restaurants">
+    <div class="bar bar-footer bar-positive" ng-click="finish()">
 <h1 class="title" align="center">Finish</h1>
 </div>
     <div id="activationDetails-markdown13" style="text-align:center;" class="show-list-numbers-and-dots">
