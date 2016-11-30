@@ -8,17 +8,25 @@ function ($scope, $stateParams, $state,  sessionService) {
   var user = sessionService.get('user');
   console.log(user);
   if (user) {
+<<<<<<< HEAD
     $state.go('restaurants');
   };
    var owner = sessionService.get('owner');
   console.log(owner);
   if (owner) {
     $state.go('restaurants');
+=======
+    $state.go('account');
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
   };
 
 }])
 
+<<<<<<< HEAD
 .controller('loginCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+=======
+.controller('loginCtrl', ['$scope', '$stateParams',  // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state) {
@@ -49,7 +57,11 @@ function ($scope, $stateParams, $state) {
 
 }])
 
+<<<<<<< HEAD
 .controller('login2Ctrl', ['$scope', '$stateParams', '$state' , // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+=======
+.controller('login2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state) {
@@ -80,7 +92,11 @@ function ($scope, $stateParams, $state) {
 
 }])
 
+<<<<<<< HEAD
 .controller('signUpCtrl', ['$scope', '$stateParams', '$state',  // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+=======
+.controller('signUpCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state) {	
@@ -116,7 +132,11 @@ function ($scope, $stateParams, $state) {
 
 }])
 
+<<<<<<< HEAD
 .controller('signUp2Ctrl', ['$scope', '$stateParams', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+=======
+.controller('signUp2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
@@ -160,6 +180,7 @@ function ($scope, $stateParams, $state) {
 
 }])
 
+<<<<<<< HEAD
 .controller('activationCtrl', ['$scope', '$stateParams', '$state','sessionService', '$ionicPopup', '$timeout', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -189,6 +210,20 @@ function ($scope, $stateParams, $state, sessionService,  $ionicPopup, $timeout) 
 
 
 .controller('activationDetailsCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+=======
+.controller('activationCtrl', ['$scope', '$stateParams', '$state','sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $state, sessionService) {
+  $scope.finish = function(){
+    sessionService.set('user', {first:'Taras'});
+    $state.go('account');
+  }
+
+}])
+
+.controller('activationDetailsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
@@ -203,6 +238,7 @@ function ($scope, $stateParams, $state) {
       $scope.details.number = window.localStorage.getItem("number");
 	  $scope.details.age = window.localStorage.getItem("age");
 
+<<<<<<< HEAD
   } else {
       alert("LocalStorage not supported!");
   }  
@@ -218,6 +254,8 @@ function ($scope, $stateParams, $state) {
     }
   };    
 
+=======
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 }])
 
 .controller('restaurantsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -233,14 +271,24 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state, sessionService) {
 
+<<<<<<< HEAD
   $scope.finish = function(){
     localStorage.clear();
 	$state.go('typeOfUser');
+=======
+  $scope.logout = function(){
+    sessionService.destroy('user');
+    $state.go('typeOfUser');
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
   }
 
 }])
 
+<<<<<<< HEAD
 .controller('ownerAccountCtrl', ['$scope', '$stateParams', '$state',  // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+=======
+.controller('ownerAccountCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state) {
@@ -308,7 +356,11 @@ function ($scope, $stateParams) {
 
 }])
 
+<<<<<<< HEAD
 .controller('addRestaurantCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+=======
+.controller('addRestaurantCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+>>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state) {
