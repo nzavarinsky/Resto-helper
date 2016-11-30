@@ -2,31 +2,27 @@
   <ion-content padding="false" class=" manual-remove-top-padding has-header">
     <form id="signUp-form5" class="list">
       <ion-list id="signUp-list4">
-        <label class="item item-input" id="signUp-input5">
-          <span class="input-label">Name</span>
-          <input type="text" placeholder="">
-        </label>
-        <label class="item item-input" id="signUp-input12">
-          <span class="input-label">Surname</span>
-          <input type="text" placeholder="">
-        </label>
-      </ion-list>
-      <div class="spacer" style="height: 20px;"></div>
-      <label class="item item-input" id="signUp-input18">
-        <span class="input-label">E-mail</span>
-        <input type="email" placeholder="">
-      </label>
-      <div class="spacer" style="height: 20px;"></div>
-      <label class="item item-input" id="signUp-input16">
-        <span class="input-label">Password</span>
-        <input type="password" placeholder="">
-      </label>
-      <label class="item item-input" id="signUp-input17">
-        <span class="input-label">Confirm password</span>
-        <input type="password" placeholder="">
-      </label>
-      <div class="spacer" style="width: 320px; height: 108px;"></div>
-      <a ui-sref="activation" id="signUp-button12" style="color:#EFF2F6;" class="button button-positive  button-full icon-right ion-log-in">Sign up</a>
+         <div class="list">
+          <label class="item item-input">
+            <span class="input-label">Name</span>
+            <input type="text" ng-model="registration.name">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Surname</span>
+            <input type="text" ng-model="registration.surname">
+          </label>
+		   <label class="item item-input">
+            <span class="input-label">E-mail</span>
+            <input type="text" ng-model="registration.email">
+          </label>
+		   <label class="item item-input">
+            <span class="input-label">Password</span>
+            <input type="password" ng-model="registration.pass">
+          </label>
+        </div>
+	    <button class="button button-full button-positive" ng-click="signUp()">
+          Sign in
+        </button>
     </form>
   </ion-content>
 </ion-view>
