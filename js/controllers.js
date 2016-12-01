@@ -8,105 +8,102 @@ function ($scope, $stateParams, $state,  sessionService) {
   var user = sessionService.get('user');
   console.log(user);
   if (user) {
-<<<<<<< HEAD
-    $state.go('restaurants');
-  };
-   var owner = sessionService.get('owner');
-  console.log(owner);
-  if (owner) {
-    $state.go('restaurants');
-=======
     $state.go('account');
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
   };
 
 }])
 
-<<<<<<< HEAD
-.controller('loginCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
-.controller('loginCtrl', ['$scope', '$stateParams',  // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
+.controller('loginCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+function ($scope, $stateParams, $state, $ionicPopup) {
 	 $scope.authorization = {
     username: '',
-    password : ''   
-  };  
-   
+    password : ''
+  };
+
+  // we don't need this, couse when user is authorized must be redirect tot account page
   if(typeof(Storage) != "undefined") {
       $scope.authorization.username = window.localStorage.getItem("username");
       $scope.authorization.password = window.localStorage.getItem("password");
   } else {
       alert("LocalStorage not supported!");
-  }  
-   
+  }
+
   $scope.signIn = function() {
     if(typeof(Storage) != "undefined") {
-        window.localStorage.setItem("username", $scope.authorization.username);
-        window.localStorage.setItem("password", $scope.authorization.password);
-         
-     $state.go('restaurants');
+        if(!$scope.authorization.username ||
+          $scope.authorization.username.length < 4 ||
+        $scope.authorization.password.length < 4){
+          $ionicPopup.alert({
+           title: 'Register error!',
+           template: 'Field must be 4 or more symbols'
+         });
+        } else {
+          window.localStorage.setItem("username", $scope.authorization.username);
+          window.localStorage.setItem("password", $scope.authorization.password);
+          $state.go('restaurants');
+        }
     } else {
         alert("LocalStorage not supported!");
     }
-  };    
-   
+  };
+
 
 
 }])
 
-<<<<<<< HEAD
-.controller('login2Ctrl', ['$scope', '$stateParams', '$state' , // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
-.controller('login2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
+.controller('login2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+function ($scope, $stateParams, $state,$ionicPopup) {
 	 $scope.authorization = {
     username: '',
-    password : ''   
-  };  
-   
+    password : ''
+  };
+
   if(typeof(Storage) != "undefined") {
       $scope.authorization.username = window.localStorage.getItem("username");
       $scope.authorization.password = window.localStorage.getItem("password");
   } else {
       alert("LocalStorage not supported!");
-  }  
-   
+  }
+
   $scope.signIn = function() {
     if(typeof(Storage) != "undefined") {
-        window.localStorage.setItem("username", $scope.authorization.username);
-        window.localStorage.setItem("password", $scope.authorization.password);
-         
-       $state.go('restaurants2');
+        if(!$scope.authorization.username ||
+          $scope.authorization.username.length < 4 ||
+        $scope.authorization.password.length < 4){
+          $ionicPopup.alert({
+           title: 'Register error!',
+           template: 'Field must be 4 or more symbols'
+         });
+        } else {
+          window.localStorage.setItem("username", $scope.authorization.username);
+          window.localStorage.setItem("password", $scope.authorization.password);
+          $state.go('restaurants2');
+        }
     } else {
         alert("LocalStorage not supported!");
     }
-  };    
-   
+  };
+
+
 
 
 }])
 
-<<<<<<< HEAD
-.controller('signUpCtrl', ['$scope', '$stateParams', '$state',  // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
-.controller('signUpCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
+.controller('signUpCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {	
+function ($scope, $stateParams, $state) {
 	 $scope.registration = {
     name: '',
     surname : '',
 	email: '',
 	pass: ''
-  };  
-   
+  };
+
   if(typeof(Storage) != "undefined") {
       $scope.registration.name = window.localStorage.getItem("name");
       $scope.registration.surname = window.localStorage.getItem("surname");
@@ -114,8 +111,8 @@ function ($scope, $stateParams, $state) {
 	  $scope.registration.pass = window.localStorage.getItem("pass");
   } else {
       alert("LocalStorage not supported!");
-  }  
-   
+  }
+
   $scope.signUp = function() {
     if(typeof(Storage) != "undefined") {
         window.localStorage.setItem("name", $scope.registration.name);
@@ -126,21 +123,17 @@ function ($scope, $stateParams, $state) {
     } else {
         alert("LocalStorage not supported!");
     }
-  };    
-   
+  };
+
 
 
 }])
 
-<<<<<<< HEAD
-.controller('signUp2Ctrl', ['$scope', '$stateParams', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
-.controller('signUp2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
+.controller('signUp2Ctrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
-function ($scope, $stateParams, $state) {	
+function ($scope, $stateParams, $state) {
 	 $scope.registration = {
     restaurantname: '',
 	pass: '',
@@ -149,8 +142,8 @@ function ($scope, $stateParams, $state) {
 	phone: '',
 	cuisine: '',
 	restauranttype: ''
-  };  
-   
+  };
+
   if(typeof(Storage) != "undefined") {
       $scope.registration.restaurantname = window.localStorage.getItem("restaurantname");
 	  $scope.registration.pass = window.localStorage.getItem("pass");
@@ -161,8 +154,8 @@ function ($scope, $stateParams, $state) {
 	  $scope.registration.restauranttype = window.localStorage.getItem("restauranttype");
   } else {
       alert("LocalStorage not supported!");
-  }  
-   
+  }
+
   $scope.signUp = function() {
     if(typeof(Storage) != "undefined") {
         window.localStorage.setItem("restaurantname", $scope.registration.restaurantname);
@@ -176,86 +169,61 @@ function ($scope, $stateParams, $state) {
     } else {
         alert("LocalStorage not supported!");
     }
-  };    
+  };
 
 }])
 
-<<<<<<< HEAD
-.controller('activationCtrl', ['$scope', '$stateParams', '$state','sessionService', '$ionicPopup', '$timeout', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('activationCtrl', ['$scope', '$stateParams', '$state','sessionService', '$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state, sessionService,  $ionicPopup, $timeout) {
+function ($scope, $stateParams, $state, sessionService, $ionicPopup) {
   $scope.finish = function(){
     sessionService.set('user', {first:'Taras'});
     $state.go('activationDetails');
   }
-
-   $scope.showAlert = function() {
-	
-      var alertPopup = $ionicPopup.alert({
-         title: 'Wait',
-         template: 'It will take 1-2 mins'
-      });
-
-      alertPopup.then(function(res) {
-      });
-   };
+    $scope.showAlert = function() {	
+          var alertPopup = $ionicPopup.alert({
+          title: 'Wait',
+          template: 'It will take 1-2 mins'
+     });
+     alertPopup.then(function(res) {
+       });
+    };
+ 
 
 }])
 
-
-
-
-
-
-
-.controller('activationDetailsCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
-.controller('activationCtrl', ['$scope', '$stateParams', '$state','sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state, sessionService) {
-  $scope.finish = function(){
-    sessionService.set('user', {first:'Taras'});
-    $state.go('account');
-  }
-
-}])
-
-.controller('activationDetailsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
+.controller('activationDetailsCtrl', ['$scope', '$stateParams', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
 function ($scope, $stateParams, $state) {	
-	 $scope.details = {
-    number: '',
-	age: '',
-   
-  };  
-   
-  if(typeof(Storage) != "undefined") {
-      $scope.details.number = window.localStorage.getItem("number");
-	  $scope.details.age = window.localStorage.getItem("age");
+ 	 $scope.details = {
+     number: '',
+ 	age: '',
+    
+   };  
+    
+   if(typeof(Storage) != "undefined") {
+       $scope.details.number = window.localStorage.getItem("number");
+ 	  $scope.details.age = window.localStorage.getItem("age");
+ 
+   } else {
+       alert("LocalStorage not supported!");
+   }  
+    
+   $scope.finish = function() {
+     if(typeof(Storage) != "undefined") {
+         window.localStorage.setItem("number", $scope.details.number);
+ 		window.localStorage.setItem("age", $scope.details.age);
+ 
+      $state.go('restaurants');
+     } else {
+         alert("LocalStorage not supported!");
+     }
+   };    
+  
 
-<<<<<<< HEAD
-  } else {
-      alert("LocalStorage not supported!");
-  }  
-   
-  $scope.finish = function() {
-    if(typeof(Storage) != "undefined") {
-        window.localStorage.setItem("number", $scope.details.number);
-		window.localStorage.setItem("age", $scope.details.age);
-
-     $state.go('restaurants');
-    } else {
-        alert("LocalStorage not supported!");
-    }
-  };    
-
-=======
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 }])
 
 .controller('restaurantsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -271,24 +239,15 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state, sessionService) {
 
-<<<<<<< HEAD
-  $scope.finish = function(){
-    localStorage.clear();
-	$state.go('typeOfUser');
-=======
+
   $scope.logout = function(){
-    sessionService.destroy('user');
+    localStorage.clear();
     $state.go('typeOfUser');
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
   }
 
 }])
 
-<<<<<<< HEAD
-.controller('ownerAccountCtrl', ['$scope', '$stateParams', '$state',  // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
-.controller('ownerAccountCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
+.controller('ownerAccountCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state) {
@@ -356,23 +315,19 @@ function ($scope, $stateParams) {
 
 }])
 
-<<<<<<< HEAD
 .controller('addRestaurantCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-=======
-.controller('addRestaurantCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
->>>>>>> 3e4820a0fe5aa535da76c1ae5437928b6cd68f68
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state) {
-	
+
 	 $scope.restaurantadding = {
     minprice: '',
 	maxprice: '',
 	region: '',
 	street: '',
 	buildingnum: ''
-  };  
-   
+  };
+
   if(typeof(Storage) != "undefined") {
       $scope.restaurantadding.minprice = window.localStorage.getItem("minprice");
 	  $scope.restaurantadding.maxprice = window.localStorage.getItem("maxprice");
@@ -381,8 +336,8 @@ function ($scope, $stateParams, $state) {
 	  $scope.restaurantadding.buildingnum = window.localStorage.getItem("buildingnum");
   } else {
       alert("LocalStorage not supported!");
-  }  
-   
+  }
+
   $scope.AddRest = function() {
     if(typeof(Storage) != "undefined") {
 		window.localStorage.setItem("minprice", $scope.restaurantadding.minprice);
@@ -394,7 +349,7 @@ function ($scope, $stateParams, $state) {
     } else {
         alert("LocalStorage not supported!");
     }
-  };    
+  };
 
 
 
