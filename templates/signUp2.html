@@ -4,27 +4,27 @@
       <ion-list id="signUp2-list5">
       <label class="item item-input">
             <span class="input-label">Restaurant name</span>
-            <input type="text" ng-model="registration.restaurantname">
+            <input type="text" ng-model="registration.restaurantname" required="required">
           </label>
           <label class="item item-input">
             <span class="input-label">Your name</span>
-            <input type="text" ng-model="registration.name">
+            <input type="text" ng-model="registration.name" required="required">
           </label>
 		  <label class="item item-input">
             <span class="input-label">Your ID</span>
-            <input type="number" ng-model="registration.ID">
+            <input type="number" ng-model="registration.ID" required="required">
           </label>
 		   <label class="item item-input">
             <span class="input-label">Your password</span>
-            <input type="password" ng-model="registration.pass">
+            <input type="password" ng-model="registration.pass" required="required">
           </label>
 		   <label class="item item-input">
             <span class="input-label">Your phone</span>
-            <input type="tel" ng-model="registration.phone">
+            <input type="tel" ng-model="registration.phone" required="required">
           </label>
         </div>
- 
- 
+
+
       <div class="spacer" style="width: 300px; height: 13px;"></div>
       <label class="item item-select" id="signUp2-select1" >
         <span class="input-label"  >Cuisine</span>
@@ -38,7 +38,7 @@
           <option>Italian</option>
           <option>Spanish</option>
         </select>
-		
+
       </label>
       <label class="item item-select" id="signUp2-select2" ng-model="registration.restauranttype">
         <span class="input-label">Restaurant type</span>
@@ -49,11 +49,11 @@
           <option>Cafe</option>
           <option>Fastfood</option>
         </select>
-		
+
       </label>
 	  <div class="bar bar-footer bar-positive button button-full button-balanced>
          <button class="button button-full button-positive" ng-click="signUp()">
-          Sign in
+          Sign up
         </button>
 		</div>
     </form>

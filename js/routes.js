@@ -7,8 +7,8 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-  
+
+
 
       .state('typeOfUser', {
     url: '/usertype',
@@ -237,9 +237,14 @@ angular.module('app.routes', [])
     templateUrl: 'templates/changeNubmerOfSeats3.html',
     controller: 'changeNubmerOfSeats3Ctrl'
   })
+  .state('addOrder', {
+    url: '/addOrder',
+    templateUrl: 'templates/addOrder.html',
+    controller: 'addOrderCtrl'
+  })
 
 $urlRouterProvider.otherwise('/usertype')
 
-  
+
 
 });

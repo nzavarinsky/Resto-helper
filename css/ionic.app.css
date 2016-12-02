@@ -9807,3 +9807,35 @@ body.platform-android {
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .tab-item, input, button, select, textarea {
   font-family: inherit; }
+
+.float-button {
+
+background-color:#387ef5;
+opacity: 1.1;
+color: white;
+border-radius: 50%;
+/*border-radius:15% 0 0 0;*/
+width: 20px;
+padding: 21px;
+font-size: 26px;
+position: fixed;
+bottom: 10%; /* Adjust height */
+right: 5%; /* Adjust position */
+z-index: 1000;
+}
+
+.float-button .height_fix {
+  margin-top: 100%;
+  border: 1px solid red;
+}
+
+.float-button .content {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -15px;
+  color: white;
+}
