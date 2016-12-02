@@ -9839,3 +9839,12 @@ z-index: 1000;
   margin-top: -15px;
   color: white;
 }
+
+.scroll {
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}

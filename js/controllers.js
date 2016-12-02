@@ -245,10 +245,13 @@ function ($scope, $stateParams, $state) {
 
 }])
 
-.controller('restaurantsCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $state) {
+  $scope.click = function() {
+    $state.go('map');
+  }
 
 
 }])
@@ -553,5 +556,44 @@ $scope.go = function() {
   });
   $state.go('myOrders');
 }
+
+}])
+
+.controller('MapCtrl', ['$scope','$stateParams', '$state', '$cordovaGeolocation',
+  function ($scope,$stateParams, $state, $cordovaGeolocation) {
+  var options = {timeout: 10000, enableHighAccuracy: true};
+
+  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+
+    var latLng = new google.maps.LatLng(49.81151475, 23.98610473);
+
+    var mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    google.maps.event.addListenerOnce($scope.map, 'idle', function(){
+
+  var marker = new google.maps.Marker({
+      map: $scope.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng
+  });
+
+  var infoWindow = new google.maps.InfoWindow({
+      content: "Test, pizza chelentano"
+  });
+
+  google.maps.event.addListener(marker, 'click', function () {
+      infoWindow.open($scope.map, marker);
+  });
+
+});
+
+  }, function(error){
+    console.log("Could not get location");
+  });
 
 }])

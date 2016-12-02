@@ -242,6 +242,12 @@ angular.module('app.routes', [])
     templateUrl: 'templates/addOrder.html',
     controller: 'addOrderCtrl'
   })
+  .state('map', {
+    url: '/map',
+    templateUrl: 'templates/map.html',
+    controller: 'MapCtrl'
+  });
+
 
 $urlRouterProvider.otherwise('/usertype')
 
