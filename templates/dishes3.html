@@ -1,39 +1,18 @@
 <ion-view title="Dishes" id="page27">
+  <ion-nav-buttons side="right" class="has-header">
+  <button class = "button icon ion-ios-arrow-back" ui-sref=order3>Go back</button>
+  </ion-nav-buttons>
   <ion-content padding="false" class=" manual-remove-top-padding has-header">
-    <div id="dishes3-container17">
-      <div id="dishes3-markdown31" style="text-align:center;" class="show-list-numbers-and-dots">
-        <hr>
+    <ion-content ng-controller="addDishesCtrl">
+      <div class="list">
+        <ion-list>
+          <ion-checkbox ng-repeat="thema in themen track by $index" class="checkbox-positive" type="checkbox" id="{{thema.id}}" ng-model="thema.checked" ng-change="updateThemaLocalStorage($index)" ng-checked="{{getCheck($index)}}">
 
-        <p style="color:#000000;">
-          <strong>Main dishes :</strong>
-        </p>
+             Dish: <strong>{{thema.name}}</strong>
+            <br> Ordered : {{ thema.checked }}
+            <br> Amount :
+          </ion-checkbox>
+        </ion-list>
+    </ion-content>
 
-        <hr>
-      </div>
-    </div>
-    <div id="dishes3-container18">
-      <form id="dishes3-form30" class="list">
-        <ion-radio id="dishes3-radio17" class="positive">Main dish #1</ion-radio>
-        <ion-radio id="dishes3-radio18" class="positive">Main dish #2</ion-radio>
-        <ion-radio id="dishes3-radio19" class="positive">Main dish #3</ion-radio>
-      </form>
-      <div id="dishes3-markdown32" style="text-align:center;" class="show-list-numbers-and-dots">
-        <hr>
-
-        <p style="color:#000000;">
-          <strong>Desserts :</strong>
-        </p>
-
-        <hr>
-      </div>
-    </div>
-    <form id="dishes3-form31" class="list">
-      <ion-radio id="dishes3-radio20" class="positive">Dessert #1</ion-radio>
-      <ion-radio id="dishes3-radio21" class="positive">Dessert #2</ion-radio>
-      <ion-radio id="dishes3-radio22" class="positive">Dessert #3</ion-radio>
-    </form>
-  </ion-content>
-    <div class="bar bar-footer bar-balanced" ui-sref="order3">
-<h1 class="title" align="center">Go back</h1>
-</div>
-</ion-view>
+  </ion-view>
