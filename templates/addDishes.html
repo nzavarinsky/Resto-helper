@@ -9,7 +9,7 @@
           <ion-checkbox ng-repeat="thema in themen track by $index" class="checkbox-positive" type="checkbox" id="{{thema.id}}" ng-model="thema.checked" ng-change="updateThemaLocalStorage($index)" ng-checked="{{getCheck($index)}}">
 
              Dish: <strong>{{thema.name}}</strong>
-            <br> Ordered : {{ thema.checked }}
+            <br> Status : {{ thema.status }}
             <br> Amount :
           </ion-checkbox>
         </ion-list>

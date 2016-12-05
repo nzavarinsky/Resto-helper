@@ -245,13 +245,37 @@ function ($scope, $stateParams, $state) {
 
 }])
 
-.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', '$ionicLoading',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+function ($scope, $stateParams, $state, $ionicPopup, $ionicLoading) {
   $scope.click = function() {
     $state.go('map');
   }
+
+  $scope.seats = function(){
+  $ionicPopup.alert({
+    title: 'So...',
+    template: 'Available seats: NaN/NaN'
+  });
+}
+$scope.show = function() {
+
+   $ionicLoading.show({
+     template: 'Blocking...',
+     duration: 2000
+   })
+   .then(function(){
+      console.log("Blocking");
+   });
+ };
+ $scope.hide = function(){
+     $ionicLoading.hide().then(function(){
+        console.log("Blocked");
+     });
+   };
+
+
 
 
 }])
@@ -266,6 +290,7 @@ function ($scope, $stateParams, $state, sessionService) {
     localStorage.clear();
     $state.go('typeOfUser');
   }
+
 
 }])
 
@@ -391,41 +416,71 @@ function ($scope, $stateParams, $state ) {
 
 }])
 
-.controller('orderCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('orderCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+function ($scope, $stateParams, $state, $ionicPopup) {
 
   $scope.cancel = function(){
-      localStorage.clear();
-  	$state.go('myOrders');
-    }
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Are you sure',
+     template: 'Do you really want to cancel order ?'
+   });
+
+   confirmPopup.then(function(res) {
+     if(res) {
+       console.log('You are sure');
+     } else {
+       console.log('You are not sure');
+     }
+     $state.go('myOrders');
+   });
+ };
 
 
 }])
 
-.controller('order2Ctrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('order2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+function ($scope, $stateParams, $state, $ionicPopup) {
   $scope.cancel = function(){
-      localStorage.clear();
-    $state.go('myOrders');
-    }
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Are you sure',
+      template: 'Do you really want to cancel order ?'
+    });
 
+    confirmPopup.then(function(res) {
+      if(res) {
+        console.log('You are sure');
+      } else {
+        console.log('You are not sure');
+      }
+      $state.go('myOrders');
+    });
+  };
 
 }])
 
-.controller('order3Ctrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('order3Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+function ($scope, $stateParams, $state, $ionicPopup) {
   $scope.cancel = function(){
-      localStorage.clear();
-    $state.go('myOrders');
-    }
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Are you sure',
+      template: 'Do you really want to cancel order ?'
+    });
 
-
+    confirmPopup.then(function(res) {
+      if(res) {
+        console.log('You are sure');
+      } else {
+        console.log('You are not sure');
+      }
+      $state.go('myOrders');
+    });
+  };
 }])
 
 .controller('seatsAddingCtrl', ['$scope', '$stateParams', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -479,40 +534,55 @@ $scope.seats = function (){
      });
 
      $scope.themen = [
-         { name: "Borsh", id: 1 },
-         { name: "Varenyky", id: 2},
-         { name: "Galushki", id: 3 },
-         { name: "Plov", id: 4},
-         { name: "Kartoplyane pure", id: 5 },
-         { name: "Cake", id: 6},
-         { name: "Coffee", id: 7 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
+         { name: "Borsh", status : "" ,  id: 1 },
+         { name: "Varenyky",status : "", id: 2},
+         { name: "Galushki",status : "", id: 3 },
+         { name: "Plov", status : "", id: 4},
+         { name: "Kartoplyane pure", status : "", id: 5 },
+         { name: "Cake", status : "", id: 6},
+         { name: "Coffee", status : "", id: 7 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
      ];
 
+
+
      $scope.updateThemaLocalStorage = function ($index) {
+       if ($scope.themen[$index].checked) {
+         $scope.themen[$index].status = "ordered"
+       }
+       else {
+         $scope.themen[$index].status = "unordered";
+       }
          // Debug: call by index dynamically
          console.log("klicked index: " + $index);
          console.log($scope.themen[$index].name);
          console.log("current state: " + $scope.themen[$index].checked);
 
+
+
+
          // Actually doing the localStorage: set item to true/false
          console.log("recent saved state: " + $window.localStorage[ $index ]);
          $window.localStorage.setItem( $index, $scope.themen[$index].checked );
+
      };
+
 
      $scope.output = $window.localStorage;
      console.log($scope.output);
 
+
      $scope.getCheck = function ($index) {
+
          // get the stored toggle (true or false) and
          // pass it over to the ng-checked in the html
          return $window.localStorage[ $index ];
      };
 
 
-}])
+  }])
 
 .controller('addDishesCtrl', ['$scope', '$stateParams', '$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -523,33 +593,48 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
    });
 
    $scope.themen = [
-       { name: "Borsh", id: 1 },
-       { name: "Varenyky", id: 2},
-       { name: "Galushki", id: 3 },
-       { name: "Plov", id: 4},
-       { name: "Kartoplyane pure", id: 5 },
-       { name: "Cake", id: 6},
-       { name: "Coffee", id: 7 },
-       { name: "Cappuccino", id: 8 },
-       { name: "Cappuccino", id: 8 },
-       { name: "Cappuccino", id: 8 },
+       { name: "Borsh", status : "" ,  id: 1 },
+       { name: "Varenyky",status : "", id: 2},
+       { name: "Galushki",status : "", id: 3 },
+       { name: "Plov", status : "", id: 4},
+       { name: "Kartoplyane pure", status : "", id: 5 },
+       { name: "Cake", status : "", id: 6},
+       { name: "Coffee", status : "", id: 7 },
+       { name: "Cappuccino", status : "", id: 8 },
+       { name: "Cappuccino", status : "", id: 8 },
+       { name: "Cappuccino", status : "", id: 8 },
    ];
 
+
+
    $scope.updateThemaLocalStorage = function ($index) {
+     if ($scope.themen[$index].checked) {
+       $scope.themen[$index].status = "ordered"
+     }
+     else {
+       $scope.themen[$index].status = "unordered";
+     }
        // Debug: call by index dynamically
        console.log("klicked index: " + $index);
        console.log($scope.themen[$index].name);
        console.log("current state: " + $scope.themen[$index].checked);
 
+
+
+
        // Actually doing the localStorage: set item to true/false
        console.log("recent saved state: " + $window.localStorage[ $index ]);
        $window.localStorage.setItem( $index, $scope.themen[$index].checked );
+
    };
+
 
    $scope.output = $window.localStorage;
    console.log($scope.output);
 
+
    $scope.getCheck = function ($index) {
+
        // get the stored toggle (true or false) and
        // pass it over to the ng-checked in the html
        return $window.localStorage[ $index ];
@@ -568,42 +653,55 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
      });
 
      $scope.themen = [
-         { name: "Borsh", id: 1 },
-         { name: "Varenyky", id: 2},
-         { name: "Galushki", id: 3 },
-         { name: "Plov", id: 4},
-         { name: "Kartoplyane pure", id: 5 },
-         { name: "Cake", id: 6},
-         { name: "Coffee", id: 7 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
+         { name: "Borsh", status : "" ,  id: 1 },
+         { name: "Varenyky",status : "", id: 2},
+         { name: "Galushki",status : "", id: 3 },
+         { name: "Plov", status : "", id: 4},
+         { name: "Kartoplyane pure", status : "", id: 5 },
+         { name: "Cake", status : "", id: 6},
+         { name: "Coffee", status : "", id: 7 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
      ];
 
+
+
      $scope.updateThemaLocalStorage = function ($index) {
+       if ($scope.themen[$index].checked) {
+         $scope.themen[$index].status = "ordered"
+       }
+       else {
+         $scope.themen[$index].status = "unordered";
+       }
          // Debug: call by index dynamically
          console.log("klicked index: " + $index);
          console.log($scope.themen[$index].name);
          console.log("current state: " + $scope.themen[$index].checked);
 
+
+
+
          // Actually doing the localStorage: set item to true/false
          console.log("recent saved state: " + $window.localStorage[ $index ]);
          $window.localStorage.setItem( $index, $scope.themen[$index].checked );
+
      };
+
 
      $scope.output = $window.localStorage;
      console.log($scope.output);
 
+
      $scope.getCheck = function ($index) {
+
          // get the stored toggle (true or false) and
          // pass it over to the ng-checked in the html
          return $window.localStorage[ $index ];
      };
 
 
-
-}])
-
+  }])
 .controller('addDishes3Ctrl', ['$scope', '$stateParams', '$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -614,42 +712,55 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
      });
 
      $scope.themen = [
-         { name: "Borsh", id: 1 },
-         { name: "Varenyky", id: 2},
-         { name: "Galushki", id: 3 },
-         { name: "Plov", id: 4},
-         { name: "Kartoplyane pure", id: 5 },
-         { name: "Cake", id: 6},
-         { name: "Coffee", id: 7 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
+         { name: "Borsh", status : "" ,  id: 1 },
+         { name: "Varenyky",status : "", id: 2},
+         { name: "Galushki",status : "", id: 3 },
+         { name: "Plov", status : "", id: 4},
+         { name: "Kartoplyane pure", status : "", id: 5 },
+         { name: "Cake", status : "", id: 6},
+         { name: "Coffee", status : "", id: 7 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
      ];
 
+
+
      $scope.updateThemaLocalStorage = function ($index) {
+       if ($scope.themen[$index].checked) {
+         $scope.themen[$index].status = "ordered"
+       }
+       else {
+         $scope.themen[$index].status = "unordered";
+       }
          // Debug: call by index dynamically
          console.log("klicked index: " + $index);
          console.log($scope.themen[$index].name);
          console.log("current state: " + $scope.themen[$index].checked);
 
+
+
+
          // Actually doing the localStorage: set item to true/false
          console.log("recent saved state: " + $window.localStorage[ $index ]);
          $window.localStorage.setItem( $index, $scope.themen[$index].checked );
+
      };
+
 
      $scope.output = $window.localStorage;
      console.log($scope.output);
 
+
      $scope.getCheck = function ($index) {
+
          // get the stored toggle (true or false) and
          // pass it over to the ng-checked in the html
          return $window.localStorage[ $index ];
      };
 
 
-
-}])
-
+  }])
 .controller('dishes2Ctrl', ['$scope', '$stateParams','$ionicPlatform', '$window',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -660,40 +771,55 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
      });
 
      $scope.themen = [
-         { name: "Borsh", id: 1 },
-         { name: "Varenyky", id: 2},
-         { name: "Galushki", id: 3 },
-         { name: "Plov", id: 4},
-         { name: "Kartoplyane pure", id: 5 },
-         { name: "Cake", id: 6},
-         { name: "Coffee", id: 7 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
-         { name: "Cappuccino", id: 8 },
+         { name: "Borsh", status : "" ,  id: 1 },
+         { name: "Varenyky",status : "", id: 2},
+         { name: "Galushki",status : "", id: 3 },
+         { name: "Plov", status : "", id: 4},
+         { name: "Kartoplyane pure", status : "", id: 5 },
+         { name: "Cake", status : "", id: 6},
+         { name: "Coffee", status : "", id: 7 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
+         { name: "Cappuccino", status : "", id: 8 },
      ];
 
+
+
      $scope.updateThemaLocalStorage = function ($index) {
+       if ($scope.themen[$index].checked) {
+         $scope.themen[$index].status = "ordered"
+       }
+       else {
+         $scope.themen[$index].status = "unordered";
+       }
          // Debug: call by index dynamically
          console.log("klicked index: " + $index);
          console.log($scope.themen[$index].name);
          console.log("current state: " + $scope.themen[$index].checked);
 
+
+
+
          // Actually doing the localStorage: set item to true/false
          console.log("recent saved state: " + $window.localStorage[ $index ]);
          $window.localStorage.setItem( $index, $scope.themen[$index].checked );
+
      };
+
 
      $scope.output = $window.localStorage;
      console.log($scope.output);
 
+
      $scope.getCheck = function ($index) {
+
          // get the stored toggle (true or false) and
          // pass it over to the ng-checked in the html
          return $window.localStorage[ $index ];
      };
 
 
-}])
+  }])
 
 .controller('dishes3Ctrl', ['$scope', '$stateParams', '$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
@@ -704,33 +830,48 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
    });
 
    $scope.themen = [
-       { name: "Borsh", id: 1 },
-       { name: "Varenyky", id: 2},
-       { name: "Galushki", id: 3 },
-       { name: "Plov", id: 4},
-       { name: "Kartoplyane pure", id: 5 },
-       { name: "Cake", id: 6},
-       { name: "Coffee", id: 7 },
-       { name: "Cappuccino", id: 8 },
-       { name: "Cappuccino", id: 8 },
-       { name: "Cappuccino", id: 8 },
+       { name: "Borsh", status : "" ,  id: 1 },
+       { name: "Varenyky",status : "", id: 2},
+       { name: "Galushki",status : "", id: 3 },
+       { name: "Plov", status : "", id: 4},
+       { name: "Kartoplyane pure", status : "", id: 5 },
+       { name: "Cake", status : "", id: 6},
+       { name: "Coffee", status : "", id: 7 },
+       { name: "Cappuccino", status : "", id: 8 },
+       { name: "Cappuccino", status : "", id: 8 },
+       { name: "Cappuccino", status : "", id: 8 },
    ];
 
+
+
    $scope.updateThemaLocalStorage = function ($index) {
+     if ($scope.themen[$index].checked) {
+       $scope.themen[$index].status = "ordered"
+     }
+     else {
+       $scope.themen[$index].status = "unordered";
+     }
        // Debug: call by index dynamically
        console.log("klicked index: " + $index);
        console.log($scope.themen[$index].name);
        console.log("current state: " + $scope.themen[$index].checked);
 
+
+
+
        // Actually doing the localStorage: set item to true/false
        console.log("recent saved state: " + $window.localStorage[ $index ]);
        $window.localStorage.setItem( $index, $scope.themen[$index].checked );
+
    };
+
 
    $scope.output = $window.localStorage;
    console.log($scope.output);
 
+
    $scope.getCheck = function ($index) {
+
        // get the stored toggle (true or false) and
        // pass it over to the ng-checked in the html
        return $window.localStorage[ $index ];
@@ -738,7 +879,6 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
 
 
 }])
-
 .controller('restaurants2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
@@ -750,26 +890,70 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('myRestaurantCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('myRestaurantCtrl', ['$scope', '$stateParams','$state', '$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $state, $ionicPopup) {
+  $scope.cancel = function(){
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Are you sure',
+      template: 'Do you really want to cancel order ?'
+    });
+
+    confirmPopup.then(function(res) {
+      if(res) {
+        console.log('You are sure');
+      } else {
+        console.log('You are not sure');
+      }
+      $state.go('myOrders');
+    });
+  };
+
+}])
+
+.controller('myRestaurant2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+  function ($scope, $stateParams, $state, $ionicPopup) {
+    $scope.cancel = function(){
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Are you sure',
+        template: 'Do you really want to cancel order ?'
+      });
+
+      confirmPopup.then(function(res) {
+        if(res) {
+          console.log('You are sure');
+        } else {
+          console.log('You are not sure');
+        }
+        $state.go('myOrders');
+      });
+    };
 
 
 }])
 
-.controller('myRestaurant2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('myRestaurant3Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+  function ($scope, $stateParams, $state, $ionicPopup) {
+    $scope.cancel = function(){
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Are you sure',
+        template: 'Do you really want to cancel order ?'
+      });
 
-
-}])
-
-.controller('myRestaurant3Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+      confirmPopup.then(function(res) {
+        if(res) {
+          console.log('You are sure');
+        } else {
+          console.log('You are not sure');
+        }
+        $state.go('myOrders');
+      });
+    };
 
 
 }])
@@ -865,5 +1049,20 @@ $scope.go = function() {
   }, function(error){
     console.log("Could not get location");
   });
+
+  $scope.myImage='';
+    $scope.myCroppedImage='';
+
+    var handleFileSelect=function(evt) {
+      var file=evt.currentTarget.files[0];
+      var reader = new FileReader();
+      reader.onload = function (evt) {
+        $scope.$apply(function($scope){
+          $scope.myImage=evt.target.result;
+        });
+      };
+      reader.readAsDataURL(file);
+    };
+    angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
 
 }])
