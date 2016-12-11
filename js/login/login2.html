@@ -1,0 +1,29 @@
+<ion-view title="Login" id="page3">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header">
+    <form id="login2-form4" class="list">
+      <ion-list id="login2-list3">
+         <div class="list">
+           <label class="item item-input">
+             <span class="input-label">Id</span>
+             <input type="text" ng-model="authorization.ID" required="required">
+           </label>
+          <label class="item item-input">
+            <span class="input-label">E-mail</span>
+            <input type="email" ng-model="authorization.username" required="required">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Password</span>
+            <input type="password" ng-model="authorization.password" required="required">
+          </label>
+        </div>
+
+        <button class="button button-full button-positive" ng-click="signIn()">
+          Sign in
+        </button>
+      </ion-list>
+      </ion-list>
+
+      <a ui-sref="signUp2" id="login2-button11" class="button button-positive  button-block button-clear">Or create an account</a>
+    </form>
+  </ion-content>
+</ion-view>

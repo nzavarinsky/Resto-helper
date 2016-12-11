@@ -18,13 +18,13 @@ angular.module('app.routes', [])
 
   .state('login', {
     url: '/userlogin',
-    templateUrl: 'templates/login.html',
+    templateUrl: 'js/login/login.html',
     controller: 'loginCtrl'
   })
 
   .state('login2', {
     url: '/ownerlogin',
-    templateUrl: 'templates/login2.html',
+    templateUrl: 'js/login/login2.html',
     controller: 'login2Ctrl'
   })
 

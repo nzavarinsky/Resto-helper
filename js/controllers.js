@@ -7,16 +7,15 @@ function ($scope, $stateParams, $state,  sessionService) {
 
   var user = sessionService.get('user');
   console.log(user);
-  if (user) {
+  if (user && user.loggedIn === true) {
     $state.go('account');
   };
-
 }])
 
-.controller('loginCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('loginCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', 'sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state, $ionicPopup) {
+function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 	  $scope.authorization = {
     username: '',
     password : ''
@@ -32,7 +31,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
    $scope.signIn = function() {
     if(typeof(Storage) != "undefined") {
-        if(!$scope.authorization.username ||
+        if(!$scope.authorization.username || !$scope.authorization.password ||
           $scope.authorization.username.length < 4 ||
           $scope.authorization.password.length < 4){
           $ionicPopup.alert({
@@ -40,9 +39,19 @@ function ($scope, $stateParams, $state, $ionicPopup) {
            template: 'Field must be 4 or more symbols'
          });
         } else {
-          window.localStorage.setItem("username", $scope.authorization.username);
-          window.localStorage.setItem("password", $scope.authorization.password);
-          $state.go('restaurants');
+          var savedUser = sessionService.get('user');
+          if($scope.authorization.username == savedUser.email
+          && $scope.authorization.password == savedUser.pass){
+            savedUser.loggedIn = true;
+            sessionService.set('user', savedUser);
+            $state.go('restaurants');
+          }
+          else {
+            $ionicPopup.alert({
+             title: 'Wrong credentials!',
+             template: 'Email or pass wrong!'
+           });
+          }
         }
     } else {
         alert("LocalStorage not supported!");
@@ -72,16 +81,39 @@ function ($scope, $stateParams, $state, $ionicPopup) {
     $scope.signIn = function() {
     if(typeof(Storage) != "undefined") {
         if(!$scope.authorization.username ||
+          $scope.authorization.ID ||
+          $scope.authorization.password ||
           $scope.authorization.username.length < 4 ||
           $scope.authorization.password.length < 4){
           $ionicPopup.alert({
-           title: 'Register error!',
+           title: 'Login error!',
            template: 'Field must be 4 or more symbols'
          });
         } else {
-          window.localStorage.setItem("username", $scope.authorization.username);
-          window.localStorage.setItem("password", $scope.authorization.password);
-          $state.go('restaurants2');
+
+          var resto = sessionService.get('restorans');
+          var restoData = null;
+
+          for ( var a = 0; a < resto.length; a++){
+            if (resto[a].ID == $scope.authorization.ID) {
+              if(resto[a].email === $scope.authorization.username &&
+              resto[a].password === $scope.authorization.username){
+                restoData = resto[a];
+                sessionService.set('currentRestoData', restoData);
+              }
+              else {
+                $ionicPopup.alert({
+                 title: 'Login error!',
+                 template: 'Pass, email or id is incorrect!';
+               });
+              }
+            }
+          }
+
+
+          // window.localStorage.setItem("username", $scope.authorization.username);
+          // window.localStorage.setItem("password", $scope.authorization.password);
+          // $state.go('restaurants2');
         }
     } else {
         alert("LocalStorage not supported!");
@@ -93,25 +125,16 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('signUpCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('signUpCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', 'sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state, $ionicPopup) {
+function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
   	$scope.registration = {
-    name: '',
-    surname : '',
-  	email: '',
-  	pass: ''
+      name: '',
+      surname : '',
+    	email: '',
+    	pass: ''
   };
-
-  if(typeof(Storage) != "undefined") {
-      $scope.registration.name = window.localStorage.getItem("name");
-      $scope.registration.surname = window.localStorage.getItem("surname");
-  	  $scope.registration.email = window.localStorage.getItem("email");
-  	  $scope.registration.pass = window.localStorage.getItem("pass");
-  } else {
-      alert("LocalStorage not supported!");
-  }
 
   $scope.signUp = function() {
     if(typeof(Storage) != "undefined") {
@@ -123,11 +146,17 @@ function ($scope, $stateParams, $state, $ionicPopup) {
            template: 'Field must be 4 or more symbols'
          });
          } else {
-        window.localStorage.setItem("name", $scope.registration.name);
-        window.localStorage.setItem("surname", $scope.registration.surname);
-    		window.localStorage.setItem("email", $scope.registration.email);
-    		window.localStorage.setItem("pass", $scope.registration.pass);
-        $state.go('activation');
+
+          var user = {
+            name: $scope.registration.name,
+            surname: $scope.registration.surname,
+            email: $scope.registration.email,
+            pass: $scope.registration.pass,
+            loggedIn: true
+          }
+          sessionService.set('user', user);
+
+          $state.go('activation');
         }
     } else {
         alert("LocalStorage not supported!");
@@ -138,32 +167,21 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('signUp2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('signUp2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',  'sessionService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 
-function ($scope, $stateParams, $state, $ionicPopup) {
+function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 	$scope.registration = {
-  restaurantname: '',
-	pass: '',
-  name : '',
-	ID: '',
-	phone: '',
-	cuisine: '',
-	restauranttype: ''
+    restaurantname: '',
+  	pass: '',
+    email : '',
+  	ID: '',
+  	phone: '',
+  	cuisine: '',
+  	restauranttype: ''
   };
 
-  if(typeof(Storage) != "undefined") {
-    $scope.registration.restaurantname = window.localStorage.getItem("restaurantname");
-	  $scope.registration.pass = window.localStorage.getItem("pass");
-    $scope.registration.name = window.localStorage.getItem("name");
-	  $scope.registration.ID = window.localStorage.getItem("ID");
-	  $scope.registration.phone = window.localStorage.getItem("phone");
-	  $scope.registration.cuisine = window.localStorage.getItem("cuisine");
-	  $scope.registration.restauranttype = window.localStorage.getItem("restauranttype");
-  } else {
-      alert("LocalStorage not supported!");
-  }
 
   $scope.signUp = function() {
     if(typeof(Storage) != "undefined") {
@@ -175,19 +193,22 @@ function ($scope, $stateParams, $state, $ionicPopup) {
        title: 'Register error!',
        template: 'Field must be 4 or more symbols'
      });
-   } else {
-    window.localStorage.setItem("restaurantname", $scope.registration.restaurantname);
-		window.localStorage.setItem("pass", $scope.registration.pass);
-    window.localStorage.setItem("name", $scope.registration.name);
-		window.localStorage.setItem("ID", $scope.registration.ID);
-		window.localStorage.setItem("phone", $scope.registration.phone);
-		window.localStorage.setItem("cuisine", $scope.registration.cuisine);
-		window.localStorage.setItem("restauranttype", $scope.registration.restauranttype);
-    $state.go('activation2');
-        }
-    } else {
-        alert("LocalStorage not supported!");
-    }
+     } else {
+
+      var restorans = sessionService.get('restorans');
+      if(!restorans) {
+        restorans = [];
+        sessionService.set('restorans', restorans);
+      }
+      restorans.push($scope.registration);
+      sessionService.set('restorans', restorans);
+      sessionService.set('currentResto', $scope.registration.ID);
+
+      $state.go('activation2');
+          }
+      } else {
+          alert("LocalStorage not supported!");
+      }
   };
 
 }])
@@ -196,17 +217,17 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $state, sessionService, $ionicPopup) {
-  $scope.finish = function(){
-    sessionService.set('user', {first:'Taras'});
-    $state.go('activationDetails');
-  }
+    $scope.finish = function(){
+      $state.go('activationDetails');
+    }
     $scope.showAlert = function() {
           var alertPopup = $ionicPopup.alert({
           title: 'Wait',
           template: 'It will take 1-2 mins'
      });
      alertPopup.then(function(res) {
-       });
+
+      });
     };
 
 
@@ -245,19 +266,23 @@ function ($scope, $stateParams, $state) {
 
 }])
 
-.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', '$ionicLoading',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', '$ionicLoading', 'sessionService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state, $ionicPopup, $ionicLoading) {
+function ($scope, $stateParams, $state, $ionicPopup, $ionicLoading, sessionService) {
   $scope.click = function() {
     $state.go('map');
   }
+
+  $scope.restorans = sessionService.get('restorans');
 
   $scope.seats = function(){
   $ionicPopup.alert({
     title: 'So...',
     template: 'Available seats: NaN/NaN'
   });
+
+
 }
 $scope.show = function() {
 
@@ -287,7 +312,9 @@ function ($scope, $stateParams, $state, sessionService) {
 
 
   $scope.logout = function(){
-    localStorage.clear();
+    var user = sessionService.get('user');
+    user.loggedIn = false;
+    sessionService.set('user', user);
     $state.go('typeOfUser');
   }
 
@@ -300,8 +327,8 @@ function ($scope, $stateParams, $state, sessionService) {
 function ($scope, $stateParams, $state) {
 
 $scope.finish = function(){
-    localStorage.clear();
-	$state.go('typeOfUser');
+     sessionService.destroy('currentResto');
+	   $state.go('typeOfUser');
   }
 
 }])
