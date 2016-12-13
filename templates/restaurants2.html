@@ -3,46 +3,22 @@
   <ion-content padding="false" class=" manual-remove-top-padding has-header">
 
 </div>
-    <div class="list">
-   <div class="item item-divider" >My restaurants</div>
-   
-		<div class="item item-thumbnail-left item-icon-right " id="restaurants2-list-item64" ui-sref="myRestaurant">Restaurant name
-		<img src="img/ejWjqVxQSAiPkJLhyhTf_restaurant-view.jpg">
-		<h2>Cuisine :</h2>
-		<p>Seats :</p>
-		<i class="icon ion-android-arrow-dropright"></i></div>
-   <div class="item item-thumbnail-left item-icon-right"  ui-sref="myRestaurant2">Restaurant name
-		<img src="img/ejWjqVxQSAiPkJLhyhTf_restaurant-view.jpg">
-		<h2>Cuisine :</h2>
-		<p>Seats :</p>
-		<i class="icon ion-android-arrow-dropright"  ui-sref="myRestaurant3"></i></div>
-   <div class="item item-thumbnail-left item-icon-right">Restaurant name
-		<img src="img/ejWjqVxQSAiPkJLhyhTf_restaurant-view.jpg">
-		<h2>Cuisine :</h2>
-		<p>Seats :</p>
-		<i class="icon ion-android-arrow-dropright"></i></div>
+<ion-list id="restaurants-list7">
 
-   <div class="item item-divider">All restaurants</div>
-   <div class="item item-thumbnail-left item-icon-right">Restaurant name
-		<img src="img/ejWjqVxQSAiPkJLhyhTf_restaurant-view.jpg">
-		<h2>Cuisine :</h2>
-		<p>Seats :</p>
-		<i class="icon ion-android-arrow-dropright"></i></div>
-   <div class="item item-thumbnail-left item-icon-right">Restaurant name
-		<img src="img/ejWjqVxQSAiPkJLhyhTf_restaurant-view.jpg">
-		<h2>Cuisine :</h2>
-		<p>Seats :</p>
-		<i class="icon ion-android-arrow-dropright"></i></div>
-   <div class="item item-thumbnail-left item-icon-right">Restaurant name
-		<img src="img/ejWjqVxQSAiPkJLhyhTf_restaurant-view.jpg">
-		<h2>Cuisine :</h2>
-		<p>Seats :</p>
-		<i class="icon ion-android-arrow-dropright"></i></div>
-</div>
+  <ion-item
+    ng-repeat="item in restorans"
+    class="item-avatar item-icon-right positive"
+    id="restaurants-list-item15" ui-sref="myRestaurant">
+    <img src="img/l8dX69LvRjiCYccm7eOd_Salaamahut.jpg">
+    <h2positive>{{item.restaurantname}}
+      <p style="white-space:normal;">Cuisine :</p>
+      <i class="icon ion-android-arrow-forward"></i>
+      <ion-option-button class="button-balanced" ng-click="seats()">Free seats</ion-option-button>
+      <ion-option-button class="button-assertive" ng-click="show()">Block</ion-option-button>
+    </h2positive>
+  </ion-item>
 
-
-      </ion-item>
-    </ion-list>
+</ion-list>
   </ion-content>
     <div class="tabs tabs-icon-left">
   <a class="tab-item" ui-sref="restaurants2">

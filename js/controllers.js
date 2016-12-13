@@ -1,8 +1,6 @@
 angular.module('app.controllers', [])
 
-.controller('typeOfUserCtrl', ['$scope', '$stateParams', '$state', 'sessionService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('typeOfUserCtrl', ['$scope', '$stateParams', '$state', 'sessionService',
 function ($scope, $stateParams, $state,  sessionService) {
 
   var user = sessionService.get('user');
@@ -12,9 +10,7 @@ function ($scope, $stateParams, $state,  sessionService) {
   };
 }])
 
-.controller('loginCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', 'sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('loginCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', 'sessionService',
 function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 	  $scope.authorization = {
     username: '',
@@ -62,9 +58,7 @@ function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 
 }])
 
-.controller('login2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('login2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
 function ($scope, $stateParams, $state, $ionicPopup) {
   	$scope.authorization = {
     username: '',
@@ -104,8 +98,8 @@ function ($scope, $stateParams, $state, $ionicPopup) {
               else {
                 $ionicPopup.alert({
                  title: 'Login error!',
-                 template: 'Pass, email or id is incorrect!';
-               });
+                 template: 'Pass, email or id is incorrect!',
+               })
               }
             }
           }
@@ -125,9 +119,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('signUpCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', 'sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('signUpCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', 'sessionService',
 function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
   	$scope.registration = {
       name: '',
@@ -167,9 +159,7 @@ function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 
 }])
 
-.controller('signUp2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',  'sessionService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('signUp2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',  'sessionService',
 
 function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 	$scope.registration = {
@@ -213,9 +203,7 @@ function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 
 }])
 
-.controller('activationCtrl', ['$scope', '$stateParams', '$state','sessionService', '$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('activationCtrl', ['$scope', '$stateParams', '$state','sessionService', '$ionicPopup',
 function ($scope, $stateParams, $state, sessionService, $ionicPopup) {
     $scope.finish = function(){
       $state.go('activationDetails');
@@ -233,9 +221,7 @@ function ($scope, $stateParams, $state, sessionService, $ionicPopup) {
 
 }])
 
-.controller('activationDetailsCtrl', ['$scope', '$stateParams', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('activationDetailsCtrl', ['$scope', '$stateParams', '$state',
 
 function ($scope, $stateParams, $state) {
  	 $scope.details = {
@@ -266,9 +252,7 @@ function ($scope, $stateParams, $state) {
 
 }])
 
-.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', '$ionicLoading', 'sessionService',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', '$ionicLoading', 'sessionService',
 function ($scope, $stateParams, $state, $ionicPopup, $ionicLoading, sessionService) {
   $scope.click = function() {
     $state.go('map');
@@ -305,9 +289,7 @@ $scope.show = function() {
 
 }])
 
-.controller('accountCtrl', ['$scope', '$stateParams', '$state', 'sessionService', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('accountCtrl', ['$scope', '$stateParams', '$state', 'sessionService',
 function ($scope, $stateParams, $state, sessionService) {
 
 
@@ -321,121 +303,112 @@ function ($scope, $stateParams, $state, sessionService) {
 
 }])
 
-.controller('ownerAccountCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+.controller('ownerAccountCtrl', ['$scope', '$stateParams', '$state', 'sessionService',
+function ($scope, $stateParams, $state, sessionService) {
 
 $scope.finish = function(){
      sessionService.destroy('currentResto');
+     sessionService.destroy('restorans');
+     sessionService.destroy('details');
+     sessionService.destroy('Street');
 	   $state.go('typeOfUser');
   }
 
 }])
 
-.controller('newEMailCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('newEMailCtrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('newPasswordCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('newPasswordCtrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('newPhoneNumberCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('newPhoneNumberCtrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('doneCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('doneCtrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('done2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('done2Ctrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('done3Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('done3Ctrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('activation2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('activation2Ctrl', ['$scope', '$stateParams',
 function ($scope, $stateParams) {
 
 
 }])
 
-.controller('addRestaurantCtrl', ['$scope', '$stateParams', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+.controller('addRestaurantCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup' , 'sessionService',
+function ($scope, $stateParams, $state, $ionicPopup, sessionService) {
 
-	 $scope.restaurantadding = {
-    minprice: '',
-	maxprice: '',
-	region: '',
-	street: '',
-	buildingnum: ''
-  };
+  $scope.restaurantadding = {
+tables: '',
+minprice: '',
+maxprice: '',
+region: '',
+street: '',
+buildingnum: ''
+};
 
-  if(typeof(Storage) != "undefined") {
-      $scope.restaurantadding.minprice = window.localStorage.getItem("minprice");
-	  $scope.restaurantadding.maxprice = window.localStorage.getItem("maxprice");
-	  $scope.restaurantadding.region = window.localStorage.getItem("region");
-	  $scope.restaurantadding.street = window.localStorage.getItem("street");
-	  $scope.restaurantadding.buildingnum = window.localStorage.getItem("buildingnum");
-  } else {
-      alert("LocalStorage not supported!");
-  }
+$scope.addRestaurant = function() {
+if(typeof(Storage) != "undefined") {
+    if(!
+        $scope.restaurantadding.minprice.lenght < 1||
+        $scope.restaurantadding.maxprice.lenght > 5 ||
+        $scope.restaurantadding.street.lenght < 2 ||
+        $scope.restaurantadding.buildingnum.lenght < 1){
+        $ionicPopup.alert({
+       title: 'Register error!',
+       template: 'Field must be 4 or more symbols'
+     });
 
-  $scope.AddRest = function() {
-    if(typeof(Storage) != "undefined") {
-		window.localStorage.setItem("minprice", $scope.restaurantadding.minprice);
-		window.localStorage.setItem("maxprice", $scope.restaurantadding.maxprice);
-		window.localStorage.setItem("region", $scope.restaurantadding.region);
-		window.localStorage.setItem("street", $scope.restaurantadding.street);
-		window.localStorage.setItem("buildingnum", $scope.restaurantadding.buildingnum);
-     $state.go('restaurants-owner');
-    } else {
-        alert("LocalStorage not supported!");
+     } else {
+
+var details = sessionService.get('details');
+if(!details) {
+  details = [];
+  sessionService.set('details', details);
+}
+details.push($scope.restaurantadding);
+sessionService.set('details', details);
+sessionService.set('Street', $scope.restaurantadding.street);
+$state.go('restaurants2');
     }
-  };
+} else {
+    alert("LocalStorage not supported!");
+}
+};
 
 
 
 }])
 
-.controller('myOrdersCtrl', ['$scope', '$stateParams', '$state',  // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state ) {
+.controller('myOrdersCtrl', ['$scope', '$stateParams', '$state', 'sessionService',
+function ($scope, $stateParams, $state, sessionService ) {
   $scope.click = function() {
     $state.go('addOrder');
   }
+  $scope.details = sessionService.get('details');
 
 
 
@@ -443,9 +416,7 @@ function ($scope, $stateParams, $state ) {
 
 }])
 
-.controller('orderCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('orderCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
 function ($scope, $stateParams, $state, $ionicPopup) {
 
   $scope.cancel = function(){
@@ -467,9 +438,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('order2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('order2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
 function ($scope, $stateParams, $state, $ionicPopup) {
   $scope.cancel = function(){
     var confirmPopup = $ionicPopup.confirm({
@@ -489,9 +458,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('order3Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('order3Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
 function ($scope, $stateParams, $state, $ionicPopup) {
   $scope.cancel = function(){
     var confirmPopup = $ionicPopup.confirm({
@@ -510,9 +477,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
   };
 }])
 
-.controller('seatsAddingCtrl', ['$scope', '$stateParams', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('seatsAddingCtrl', ['$scope', '$stateParams', '$ionicPopup', '$state',
 function ($scope, $stateParams, $ionicPopup, $state) {
 $scope.seats = function (){
   $ionicPopup.alert({
@@ -524,9 +489,7 @@ $scope.seats = function (){
 
 }])
 
-.controller('seatsAdding2Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('seatsAdding2Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state',
 function ($scope, $stateParams, $ionicPopup, $state) {
 $scope.seats = function (){
   $ionicPopup.alert({
@@ -538,9 +501,7 @@ $scope.seats = function (){
 
 }])
 
-.controller('seatsAdding3Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('seatsAdding3Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state',
 function ($scope, $stateParams, $ionicPopup, $state) {
 $scope.seats = function (){
   $ionicPopup.alert({
@@ -552,9 +513,7 @@ $scope.seats = function (){
 
 }])
 
-.controller('dishesCtrl', ['$scope', '$stateParams', '$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('dishesCtrl', ['$scope', '$stateParams', '$ionicPlatform', '$window',
   function ($scope, $stateParams, $ionicPlatform, $window) {
     $ionicPlatform.ready(function($index) {
          // Ready functions
@@ -611,9 +570,7 @@ $scope.seats = function (){
 
   }])
 
-.controller('addDishesCtrl', ['$scope', '$stateParams', '$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('addDishesCtrl', ['$scope', '$stateParams', '$ionicPlatform', '$window',
 function ($scope, $stateParams, $ionicPlatform, $window) {
   $ionicPlatform.ready(function($index) {
        // Ready functions
@@ -670,9 +627,7 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
 
 }])
 
-.controller('addDishes2Ctrl', ['$scope', '$stateParams','$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('addDishes2Ctrl', ['$scope', '$stateParams','$ionicPlatform', '$window',
 
   function ($scope, $stateParams, $ionicPlatform, $window) {
     $ionicPlatform.ready(function($index) {
@@ -729,9 +684,7 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
 
 
   }])
-.controller('addDishes3Ctrl', ['$scope', '$stateParams', '$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('addDishes3Ctrl', ['$scope', '$stateParams', '$ionicPlatform', '$window',
 
   function ($scope, $stateParams, $ionicPlatform, $window) {
     $ionicPlatform.ready(function($index) {
@@ -788,9 +741,7 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
 
 
   }])
-.controller('dishes2Ctrl', ['$scope', '$stateParams','$ionicPlatform', '$window',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('dishes2Ctrl', ['$scope', '$stateParams','$ionicPlatform', '$window',
 
   function ($scope, $stateParams, $ionicPlatform, $window) {
     $ionicPlatform.ready(function($index) {
@@ -848,9 +799,7 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
 
   }])
 
-.controller('dishes3Ctrl', ['$scope', '$stateParams', '$ionicPlatform', '$window', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('dishes3Ctrl', ['$scope', '$stateParams', '$ionicPlatform', '$window',
 function ($scope, $stateParams, $ionicPlatform, $window) {
   $ionicPlatform.ready(function($index) {
        // Ready functions
@@ -906,20 +855,15 @@ function ($scope, $stateParams, $ionicPlatform, $window) {
 
 
 }])
-.controller('restaurants2Ctrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
-	$scope.shouldShowDelete = false;
- $scope.shouldShowReorder = false;
- $scope.listCanSwipe = true
+.controller('restaurants2Ctrl', ['$scope', '$stateParams', 'sessionService',
+function ($scope, $stateParams, sessionService) {
+
+  $scope.restorans = sessionService.get('restorans');
 
 
 }])
 
-.controller('myRestaurantCtrl', ['$scope', '$stateParams','$state', '$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('myRestaurantCtrl', ['$scope', '$stateParams','$state', '$ionicPopup',
 function ($scope, $stateParams, $state, $ionicPopup) {
   $scope.cancel = function(){
     var confirmPopup = $ionicPopup.confirm({
@@ -939,9 +883,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('myRestaurant2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('myRestaurant2Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
   function ($scope, $stateParams, $state, $ionicPopup) {
     $scope.cancel = function(){
       var confirmPopup = $ionicPopup.confirm({
@@ -962,9 +904,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('myRestaurant3Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('myRestaurant3Ctrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
   function ($scope, $stateParams, $state, $ionicPopup) {
     $scope.cancel = function(){
       var confirmPopup = $ionicPopup.confirm({
@@ -985,9 +925,7 @@ function ($scope, $stateParams, $state, $ionicPopup) {
 
 }])
 
-.controller('changeNubmerOfSeatsCtrl', ['$scope', '$stateParams', '$ionicPopup', '$state',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('changeNubmerOfSeatsCtrl', ['$scope', '$stateParams', '$ionicPopup', '$state',
 function ($scope, $stateParams, $ionicPopup, $state) {
 $scope.seats = function (){
   $ionicPopup.alert({
@@ -999,9 +937,7 @@ $scope.seats = function (){
 
 }])
 
-.controller('changeNubmerOfSeats2Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('changeNubmerOfSeats2Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state',
 function ($scope, $stateParams, $ionicPopup, $state) {
  $scope.seats = function (){
   $ionicPopup.alert({
@@ -1013,9 +949,7 @@ function ($scope, $stateParams, $ionicPopup, $state) {
 
 }])
 
-.controller('changeNubmerOfSeats3Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('changeNubmerOfSeats3Ctrl', ['$scope', '$stateParams', '$ionicPopup', '$state',
 function ($scope, $stateParams, $ionicPopup, $state) {
 $scope.seats = function (){
   $ionicPopup.alert({
@@ -1026,9 +960,7 @@ $scope.seats = function (){
 }
 
 }])
-.controller('addOrderCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
+.controller('addOrderCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup',
 function ($scope, $stateParams, $state, $ionicPopup) {
 $scope.go = function() {
   $ionicPopup.alert({
