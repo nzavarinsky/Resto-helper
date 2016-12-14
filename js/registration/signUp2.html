@@ -1,0 +1,61 @@
+<ion-view title="Sign up" id="page5">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header">
+    <form id="signUp2-form6" class="list">
+      <ion-list id="signUp2-list5">
+      <label class="item item-input">
+            <span class="input-label">Restaurant name</span>
+            <input type="text" ng-model="registration.restaurantname" required="required">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Your email</span>
+            <input type="email" ng-model="registration.email" required="required">
+          </label>
+		  <label class="item item-input">
+            <span class="input-label">Your ID</span>
+            <input type="number" ng-model="registration.ID" required="required">
+          </label>
+		   <label class="item item-input">
+            <span class="input-label">Your password</span>
+            <input type="password" ng-model="registration.pass" required="required">
+          </label>
+		   <label class="item item-input">
+            <span class="input-label">Your phone</span>
+            <input type="tel" ng-model="registration.phone" required="required">
+          </label>
+        </div>
+
+
+      <div class="spacer" style="width: 300px; height: 13px;"></div>
+      <label class="item item-select" id="signUp2-select1" >
+        <span class="input-label"  >Cuisine</span>
+		 <span type="item-select" ng-model="registration.cuisine">
+        <select>
+          <option >Ukrainian</option>
+          <option>Chinese</option>
+          <option>European</option>
+          <option>Asian</option>
+          <option>American</option>
+          <option>Italian</option>
+          <option>Spanish</option>
+        </select>
+
+      </label>
+      <label class="item item-select" id="signUp2-select2" ng-model="registration.restauranttype">
+        <span class="input-label">Restaurant type</span>
+        <select>
+          <option>Restaurant</option>
+          <option>Bar</option>
+          <option>Bistro</option>
+          <option>Cafe</option>
+          <option>Fastfood</option>
+        </select>
+
+      </label>
+	  <div class="bar bar-footer bar-positive button button-full button-balanced>
+         <button class="button button-full button-positive" ng-click="signUp()">
+          Sign up
+        </button>
+		</div>
+    </form>
+  </ion-content>
+</ion-view>

@@ -18,37 +18,37 @@ angular.module('app.routes', [])
 
   .state('login', {
     url: '/userlogin',
-    templateUrl: 'js/login/login.html',
+    templateUrl: 'js/logins/login.html',
     controller: 'loginCtrl'
   })
 
   .state('login2', {
     url: '/ownerlogin',
-    templateUrl: 'js/login/login2.html',
+    templateUrl: 'js/logins/login2.html',
     controller: 'login2Ctrl'
   })
 
   .state('signUp', {
     url: '/usersignup',
-    templateUrl: 'templates/signUp.html',
+    templateUrl: 'js/registration/signUp.html',
     controller: 'signUpCtrl'
   })
 
   .state('signUp2', {
     url: '/ownersignup',
-    templateUrl: 'templates/signUp2.html',
+    templateUrl: 'js/registration/signUp2.html',
     controller: 'signUp2Ctrl'
   })
 
   .state('activation', {
     url: '/activationuser',
-    templateUrl: 'templates/activation.html',
+    templateUrl: 'js/activation/activation.html',
     controller: 'activationCtrl'
   })
 
   .state('activationDetails', {
     url: '/detailsuser',
-    templateUrl: 'templates/activationDetails.html',
+    templateUrl: 'js/activation/activationDetails.html',
     controller: 'activationDetailsCtrl'
   })
 
