@@ -1,0 +1,46 @@
+<ion-view title="Restaurants" id="page10">
+  <ion-nav-buttons side="right" class="has-header">
+
+   <button class = "button icon ion-earth" ng-click="click()">Map</button>
+   </ion-nav-buttons>
+  <ion-content padding="false" class=" manual-remove-top-padding has-header">
+    <div id="restaurants-container8">
+      <form id="restaurants-form12" class="list">
+        <ion-toggle toggle-class="toggle-positive" id="restaurants-toggle4">Sort by free tables</ion-toggle>
+      </form>
+    </div>
+    <ion-list id="restaurants-list7">
+
+      <ion-item
+        ng-repeat="item in restorans"
+        class="item-avatar item-icon-right positive"
+        id="restaurants-list-item15">
+        <img src="img/l8dX69LvRjiCYccm7eOd_Salaamahut.jpg">
+        <h2positive>{{item.restaurantname}}
+          <p style="white-space:normal;">Cuisine :</p>
+          <i class="icon ion-android-arrow-forward"></i>
+          <ion-option-button class="button-balanced" ng-click="seats()">Free seats</ion-option-button>
+          <ion-option-button class="button-assertive" ng-click="show()">Block</ion-option-button>
+        </h2positive>
+      </ion-item>
+
+    </ion-list>
+
+
+
+  </ion-content>
+  	<div class="tabs tabs-icon-left">
+  <a class="tab-item" ui-sref="restaurants">
+    <i class="icon ion-home"></i>
+    Restaurants
+  </a>
+  <a class="tab-item" ui-sref="myOrders">
+    <i class="icon ion-star"></i>
+    My orders
+  </a>
+  <a class="tab-item" ui-sref="account">
+    <i class="icon ion-gear-a"></i>
+    My account
+  </a>
+</div>
+</ion-view>

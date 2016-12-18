@@ -1,0 +1,45 @@
+<ion-view title="Add restaurant" id="page9">
+  <ion-content padding="false" class=" manual-remove-top-padding has-header">
+    <form id="addRestaurant-form21" class="list">
+      <div>
+        <img src="img/f2Oh4h6rSaCHRivRvc7L_profile_photo_circle.jpg" style="display: block; width: 15%; height: auto; margin-left: auto; margin-right: auto;">
+      </div>
+      <button id="addRestaurant-button16" class="button button-positive button-small button-full button-outline">Add photo</button>
+      <label class="item item-input" id="addRestaurant-input29">
+        <span class="input-label">Tables</span>
+        <input type="number" placeholder="1-1000" ng-model="restaurantadding.tables">
+      </label>
+      <label class="item item-input" id="addRestaurant-input30">
+        <span class="input-label">Minimal price</span>
+        <input type="number" placeholder="1$" ng-model="restaurantadding.minprice">
+      </label>
+      <label class="item item-input" id="addRestaurant-input31">
+        <span class="input-label">Max price</span>
+        <input type="number" placeholder="10000$" ng-model="restaurantadding.maxprice">
+      </label>
+      <label class="item item-select" id="addRestaurant-select8">
+        <span class="input-label" ng-model="restaurantadding.region">Region</span>
+        <select>
+          <option>Frankivskyi</option>
+          <option>Syhiv</option>
+          <option>Shevchenkivskyi</option>
+          <option>Zaliznychnyi</option>
+          <option>Centre of cityt</option>
+        </select>
+      </label>
+      <label class="item item-input" id="addRestaurant-input33">
+        <span class="input-label">Street</span>
+        <input type="text" placeholder="Sadova" ng-model="restaurantadding.street">
+      </label>
+      <label class="item item-input" id="addRestaurant-input34">
+        <span class="input-label">Building №</span>
+        <input type="text" placeholder="1" ng-model="restaurantadding.buildingnum">
+      </label>
+
+	</form>
+	<div class="bar bar-footer bar-positive" >
+<h1 class="title" align="center" ng-click="addRestaurant()">Add my restaurant</h1>
+</div>
+
+  </ion-content>
+</ion-view>

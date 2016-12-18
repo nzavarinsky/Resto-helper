@@ -1,4 +1,5 @@
-angular.module('app.controllers', []).controller('restaurantsCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', '$ionicLoading', 'sessionService',
+angular.module('app.controllers')
+.controller('restaurantsCtrl', ['$scope', '$stateParams', '$state', '$ionicPopup', '$ionicLoading', 'sessionService',
 function ($scope, $stateParams, $state, $ionicPopup, $ionicLoading, sessionService) {
   $scope.click = function() {
     $state.go('map');
@@ -29,31 +30,8 @@ $scope.show = function() {
         console.log("Blocked");
      });
    };
-}])
-
-.controller('restaurants2Ctrl', ['$scope', '$stateParams', 'sessionService',
-function ($scope, $stateParams, sessionService) {
-
-  $scope.restorans = sessionService.get('restorans');
 
 
-}])
 
-.controller('myRestaurantCtrl', ['$scope', '$stateParams','$state', '$ionicPopup',
-function ($scope, $stateParams, $state, $ionicPopup) {
-  $scope.cancel = function(){
-    var confirmPopup = $ionicPopup.confirm({
-      title: 'Are you sure',
-      template: 'Do you really want to cancel order ?'
-    });
 
-    confirmPopup.then(function(res) {
-      if(res) {
-        console.log('You are sure');
-      } else {
-        console.log('You are not sure');
-      }
-      $state.go('myOrders');
-    });
-  };
 }])

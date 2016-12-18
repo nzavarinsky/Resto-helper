@@ -44,3 +44,8 @@ function ($scope, $stateParams, $state) {
      }
    };
 }])
+.controller('activation2Ctrl', ['$scope', '$stateParams',
+function ($scope, $stateParams) {
+
+
+}])

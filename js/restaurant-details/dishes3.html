@@ -1,0 +1,18 @@
+<ion-view title="Dishes" id="page27">
+  <ion-nav-buttons side="right" class="has-header">
+  <button class = "button icon ion-ios-arrow-back" ui-sref=order3>Go back</button>
+  </ion-nav-buttons>
+  <ion-content padding="false" class=" manual-remove-top-padding has-header">
+    <ion-content ng-controller="addDishesCtrl">
+      <div class="list">
+        <ion-list>
+          <ion-checkbox ng-repeat="thema in themen track by $index" class="checkbox-positive" type="checkbox" id="{{thema.id}}" ng-model="thema.checked" ng-change="updateThemaLocalStorage($index)" ng-checked="{{getCheck($index)}}">
+
+             Dish: <strong>{{thema.name}}</strong>
+            <br> Status : {{ thema.status }}
+            <br> Amount :
+          </ion-checkbox>
+        </ion-list>
+    </ion-content>
+
+  </ion-view>
