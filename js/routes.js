@@ -246,6 +246,11 @@ angular.module('app.routes', [])
     url: '/map',
     templateUrl: 'templates/map.html',
     controller: 'MapCtrl'
+  })
+  .state('feedback', {
+    url: '/feedback',
+    templateUrl: 'templates/feedback.html',
+    controller: 'FeedCtrl'
   });
 
 

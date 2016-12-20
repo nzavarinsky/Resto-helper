@@ -1,0 +1,47 @@
+
+
+<head>
+
+  <ion-view title="Feedback" hide-back-button="false" id="feedback" style="background-color:#FFFFFF;">
+    <ion-content padding="false" class="has-header">
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+
+  <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+  <link href="https://rawgit.com/fraserxu/ionic-rating/master/ionic-rating.css" rel="stylesheet">
+  <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+  <script src="https://rawgit.com/fraserxu/ionic-rating/master/ionic-rating.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+</head>
+
+<body ng-controller="FeedCtrl">
+
+  <ion-content>
+
+      <div class="item item-text-wrap">
+        <form name="feedbackForm" id="feedbackForm" ng-submit="ctrl.sendFeedback()">
+          <div class="list">
+            <div class="item item-text-wrap input-field">
+              <input type="email" id="email" class="validate" ng-model="inputs.email" required="required">
+              <label for="email">Email</label>
+            </div>
+            <div class="item">
+            <rating ng-model="ctrl.formdata.rating" max="rating.max" rate="3"></rating>
+            </div>
+            <div class="item item-text-wrap input-field">
+              <textarea id="textarea" class="materialize-textarea" required="required" ng-model="inputs.text"></textarea>
+              <label for="textarea">Your text here...</label>
+            </div>
+            <input type="submit" id="submit" value="Submit" ng-click="feed()" class="button button-block teal lighten-2 white-text">
+          </div>
+        </form>
+      </div>
+    </div>
+  </ion-content>
+</body>
+</html>

@@ -135,3 +135,49 @@ $scope.go = function() {
     angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
 
 }])
+
+  .controller('FeedCtrl', ['$scope', '$stateParams', '$state',  'sessionService', '$ionicPopup',
+    function ($scope, $stateParams, $state,  sessionService, $ionicPopup) {
+
+  $scope.ratingFull = {};
+  $scope.ratingFull.rate = 3;
+  $scope.ratingFull.max = 5;
+
+  $scope.ratingHalf = {};
+  $scope.ratingHalf.rate = 3.5;
+  $scope.ratingHalf.max = 5;
+
+  $scope.reset = function(){
+    $scope.ratingFull.rate = 0;
+  }
+    	$scope.registration = {
+        email: '',
+        text : '',
+    };
+
+    $scope.inputs = {
+      email: '',
+    	text: '',
+    };
+
+
+    $scope.feed = function() {
+
+
+      var feed = sessionService.get('feed');
+      if(!feed) {
+        feed = [];
+        sessionService.set('feed', feed);
+      }
+      feed.push($scope.inputs);
+      sessionService.set('feed', feed);
+      sessionService.set('text', $scope.inputs.text);
+      $ionicPopup.alert({
+        title: 'Yeah',
+        template: 'You successfully gave us your feedback about app'
+      });
+
+      $state.go('account');
+          }
+          
+}])

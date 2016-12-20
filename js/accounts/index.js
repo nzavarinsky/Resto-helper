@@ -9,6 +9,9 @@ function ($scope, $stateParams, $state, sessionService) {
     sessionService.set('user', user);
     $state.go('typeOfUser');
   }
+  $scope.feed = function () {
+     $state.go('feedback');
+   }
 }])
 
 .controller('ownerAccountCtrl', ['$scope', '$stateParams', '$state', 'sessionService',
@@ -21,4 +24,6 @@ $scope.finish = function(){
      sessionService.destroy('Street');
 	   $state.go('typeOfUser');
   }
+
+
 }])
